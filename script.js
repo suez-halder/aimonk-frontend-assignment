@@ -125,7 +125,7 @@ function createTagElement(tag, parentTag) {
 
     tagHeader.querySelector('.add-child-btn').addEventListener('click', () => {
         const newChildIndex = (tag.children && tag.children.length + 1) || 1;
-        const newChild = { name: `${tag.name}-child${newChildIndex}`, data: 'Data' };
+        const newChild = { name: `child${newChildIndex}`, data: 'Data' };
         tag.children = tag.children || [];
         tag.children.push(newChild);
         const newChildElement = createTagElement(newChild, tag);
