@@ -152,42 +152,6 @@ body {
 }
 
 
-/* ... (your Modal CSS) ... */
-
-.modal {
-    width: 100%;
-    height: 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal pre {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    max-width: 80%;
-    overflow: auto;
-}
-
-.modal button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #f9fcff;
-    color: black;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-}
-
-.modal button:hover {
-    background-color: #0056b3;
-}
 
 .dark-mode-toggle {
     display: block;
