@@ -40,6 +40,7 @@ function createTagElement(tag, parentTag) {
     tagElement.appendChild(childrenContainer);
     tag.children.forEach((child) => {
       childrenContainer.appendChild(createTagElement(child, tag));
+     
     });
   }
 
@@ -52,11 +53,20 @@ function createTagElement(tag, parentTag) {
     dataInput.value = tag.data || "";
     dataInput.placeholder = "Data...";
     tagElement.appendChild(dataInput);
-  
+
     dataInput.addEventListener("input", () => {
       tag.data = dataInput.value;
       updateExport();
     });
+  
+  }
+  if(parentTag){
+    // console.log(parentTag.children.length,"parenttag")
+    if(parentTag.children.length>0){
+      // console.log(tagElement.parentElement,"parentelem")
+      // dataInput.style.display="none"
+      // delete parentTag.data
+    }
   }
   // Handle tag name editing
   const tagNameElement = tagHeader.querySelector(".tag-name");
@@ -108,6 +118,16 @@ function createTagElement(tag, parentTag) {
     const newChild = { name: newChildName, data: "Data", children: [] };
     tag.children = tag.children || [];
     tag.children.push(newChild);
+      // Hide the data input for the current tag
+     if(tagHeader.querySelector(".tag-name").textContent != "root"){
+       const dataInput = tagElement.querySelector(".data-input");
+       if (dataInput.parentElement == tagElement) {
+           dataInput.style.display = "none";
+           delete tag.data
+           updateExport()
+           console.log(tag)
+       }
+     }
     const newChildElement = createTagElement(newChild, tag);
     tagElement
       .querySelector(".children-container")
@@ -118,6 +138,7 @@ function createTagElement(tag, parentTag) {
   // return tagElement;
 
   function generateChildName(parentTag, childIndex) {
+    
     if (parentTag === tree) {
       return `child${childIndex}`;
     } else {
@@ -157,6 +178,7 @@ function addChild(parentTag) {
 
 function createNewChild(tag, index) {
   const newName = `${tag.name}-child${index}`;
+  console.log(newName,"newname")
   return { name: newName, data: "Data", children: [] };
 }
 // Toggle between light and dark mode
